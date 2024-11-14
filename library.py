@@ -23,13 +23,16 @@ class Library:
                 return
         print(f'Sorry, "{title}" is not available in the library.')
 
-    def return_book(self, title):
-        for book in self.books:
-            if book.title == title:
-                if book.return_book():
-                    print(f'You have returned "{title}".')
-                    return
-                else:
-                    print(f'Error: "{title}" was not borrowed.')
-                    return
+    def return_book(self, title, copy_index):
+        if copy_index < 0 or copy_index >= len(self.books):
+            print('Invalid copy index')
+            return
+        book = self.books[copy_index]
+        if book.title == title:
+            if book.return_book():
+                print(f'You have returned "{title}".')
+                return
+            else:
+                print(f'Error: "{title}" was not borrowed.')
+                return
         print(f'Sorry, "{title}" is not recognized by the library.')
