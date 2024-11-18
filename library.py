@@ -20,13 +20,13 @@ class Library:
                     return
         print(f'Sorry, "{title}" with ID {book_id} is not available in the library.')
 
-    def return_book(self, title):
+    def return_book(self, title, book_id):
         for book in self.books:
-            if book.title == title:
+            if book.title == title and book.id == book_id:
                 if book.return_book():
-                    print(f'You have returned "{title}".')
+                    print(f'You have returned "{title}" (ID: {book_id}).')
                     return
                 else:
-                    print(f'Error: "{title}" was not borrowed.')
+                    print(f'Error: "{title}" (ID: {book_id}) was not borrowed.')
                     return
-        print(f'Sorry, "{title}" is not recognized by the library.')
+        print(f'Sorry, "{title}" with ID {book_id} is not recognized by the library.')
